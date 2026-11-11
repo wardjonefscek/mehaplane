@@ -81,3 +81,38 @@ python3 -m http.server 8000
 ```
 
 Затем откройте http://localhost:8000.
+
+## MCP-сервер
+
+На сайте работают два адреса по протоколу MCP (транспорт Streamable HTTP, версия 2026-07-28, совместимо с клиентами 2025-03-26 … 2025-11-25). Сторонних библиотек нет — обычный PHP.
+
+| Адрес | Для кого | Инструменты |
+| --- | --- | --- |
+| `https://wardenhmehaplane.ru/mcp/` | любая нейросеть, вход не нужен | `get_tariffs`, `calculate_price`, `list_works`, `get_faq`, `submit_request`; ресурсы: llms.txt, оферта, политика, согласие |
+| `https://wardenhmehaplane.ru/mcp/service/` | владелец, по токену | `get_errors`, `check_site`, `mark_error` |
+
+Подключение публичного адреса в Claude Code:
+
+```
+claude mcp add --transport http mehaplane https://wardenhmehaplane.ru/mcp/
+```
+
+Служебного (токен — значение `mcp_token` из `api/config.php` на хостинге):
+
+```
+claude mcp add --transport http mehaplane-service https://wardenhmehaplane.ru/mcp/service/ --header "Authorization: Bearer ТОКЕН"
+```
+
+### Как устроено
+
+- `api/mcp-core.php` — разбор JSON-RPC, проверка заголовков и версии, лимит 60 запросов в минуту с адреса.
+- `mcp/index.php`, `mcp/service/index.php` — инструменты.
+- `api/pricing.php` — формула цены на PHP. Данные берёт из `assets/js/config.js`, того же файла, что читает калькулятор, поэтому после `window.MEHAPLANE =` в нём строгий JSON.
+- `assets/js/price.js` — та же формула для браузера. `node tools/test-pricing.js` сверяет обе на 243 наборах параметров.
+- `assets/js/errors.js` → `api/log-error.php` — ошибки скриптов из браузеров; ошибки PHP ловит `api/lib.php`. Всё попадает в таблицу `site_errors` и видно на `/admin/?view=errors`. Из текста ошибок вырезаются e-mail и телефоны.
+- Заявка через `submit_request` сохраняется в ту же таблицу `leads` с пометкой «через нейросеть»; без `consent: true` и текущей версии согласия не принимается.
+
+### Безопасность
+
+Служебный сервер не меняет файлы сайта и не отдаёт заявки. Исправления нейросеть предлагает пулл-реквестом в этот репозиторий; на сайт они попадают после того, как владелец их принял. Тексты ошибок приходят из браузеров посетителей, поэтому инструмент помечает их как непроверенный ввод.
+

@@ -56,3 +56,7 @@
 - Заявка: форма на главной странице (https://wardenhmehaplane.ru/#zayavka)
 - Telegram: @mehaplane
 - Почта: hello@mehaplane.ru
+
+## MCP-сервер
+
+Нейросети могут получать данные студии напрямую по протоколу MCP: https://wardenhmehaplane.ru/mcp/ (транспорт Streamable HTTP, вход не нужен). Инструменты: get_tariffs — тарифы, calculate_price — расчёт цены и срока по формуле калькулятора, list_works — работы, get_faq — частые вопросы, submit_request — заявка (только по прямой просьбе человека и с его согласием на обработку персональных данных).

@@ -1,5 +1,5 @@
 # Закрываем служебные файлы от открытия из браузера
-<FilesMatch "^(config|lib)\.php$">
+<FilesMatch "^(config|config\.example|lib|mcp-core|pricing|site-check)\.php$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
