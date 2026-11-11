@@ -93,7 +93,7 @@ if (!$setupError && $authed && $action !== '') {
         mp_flash('Страница устарела. Повтори действие.', 'err');
         mp_redirect();
     }
-    $back = isset($_POST['back']) && preg_match('/^\?status=(new|work|done|all)$/', $_POST['back']) ? $_POST['back'] : '';
+    $back = isset($_POST['back']) && preg_match('/^\?(status=(new|work|done|all)|view=errors(&es=(new|fixed|ignored|all))?)$/', $_POST['back']) ? $_POST['back'] : '';
     $id = (int)($_POST['id'] ?? 0);
 
     if ($action === 'logout') {
@@ -109,6 +109,16 @@ if (!$setupError && $authed && $action !== '') {
     if ($action === 'delete') {
         mp_db()->prepare('DELETE FROM leads WHERE id = ?')->execute([$id]);
         mp_flash('Заявка №' . $id . ' удалена вместе с личными данными.');
+        mp_redirect($back);
+    }
+    if ($action === 'err_status' && isset(MP_ERR_STATUSES[$_POST['status'] ?? ''])) {
+        mp_db()->prepare('UPDATE site_errors SET status = ? WHERE id = ?')->execute([$_POST['status'], $id]);
+        mp_flash('Ошибка: статус «' . MP_ERR_STATUSES[$_POST['status']] . '».');
+        mp_redirect($back);
+    }
+    if ($action === 'err_delete') {
+        mp_db()->prepare('DELETE FROM site_errors WHERE id = ?')->execute([$id]);
+        mp_flash('Запись об ошибке удалена.');
         mp_redirect($back);
     }
     if ($action === 'tg_test') {
@@ -130,10 +140,35 @@ $filter = $_GET['status'] ?? 'new';
 if ($filter !== 'all' && !isset(MP_STATUSES[$filter])) {
     $filter = 'new';
 }
+$view = ($_GET['view'] ?? '') === 'errors' ? 'errors' : 'leads';
+$es = $_GET['es'] ?? 'new';
+if ($es !== 'all' && !isset(MP_ERR_STATUSES[$es])) {
+    $es = 'new';
+}
+$siteErrors = [];
+$errCounts = ['new' => 0, 'fixed' => 0, 'ignored' => 0, 'all' => 0];
+$siteCheck = null;
 $leads = [];
 $counts = ['new' => 0, 'work' => 0, 'done' => 0, 'all' => 0];
 if (!$setupError && $authed) {
     $db = mp_db();
+    foreach ($db->query('SELECT status, COUNT(*) AS n FROM site_errors GROUP BY status') as $r) {
+        $errCounts[$r['status']] = (int)$r['n'];
+        $errCounts['all'] += (int)$r['n'];
+    }
+    if ($view === 'errors') {
+        if ($es === 'all') {
+            $siteErrors = $db->query('SELECT * FROM site_errors ORDER BY last_at DESC LIMIT 200')->fetchAll();
+        } else {
+            $st = $db->prepare('SELECT * FROM site_errors WHERE status = ? ORDER BY last_at DESC LIMIT 200');
+            $st->execute([$es]);
+            $siteErrors = $st->fetchAll();
+        }
+        if (isset($_GET['check'])) {
+            require __DIR__ . '/../api/site-check.php';
+            $siteCheck = mp_site_check();
+        }
+    }
     foreach ($db->query('SELECT status, COUNT(*) AS n FROM leads GROUP BY status') as $r) {
         $counts[$r['status']] = (int)$r['n'];
         $counts['all'] += (int)$r['n'];
@@ -161,7 +196,7 @@ function mp_contact_link(string $c): string
     }
     return mp_h($c);
 }
-$back = '?status=' . $filter;
+$back = $view === 'errors' ? '?view=errors&es=' . $es : '?status=' . $filter;
 ?><!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -197,6 +232,11 @@ $back = '?status=' . $filter;
     .tg-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .tg-chats { display: grid; gap: 6px; }
     .tg-chats code { background: var(--bg-3); padding: 2px 8px; border-radius: 6px; user-select: all; }
+    .adm-views { display: flex; gap: 8px; flex-wrap: wrap; }
+    .err-msg { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9rem; overflow-wrap: anywhere; }
+    .badge { font-size: .8rem; font-weight: 500; color: var(--text-2); background: var(--bg-3); border-radius: 6px; padding: 2px 8px; margin-left: 6px; }
+    .check-list { display: grid; gap: 6px; padding: 0; list-style: none; }
+    .check-list .is-error { color: var(--error); }
     .empty { color: var(--text-2); padding: 28px; text-align: center; background: var(--bg-2); border-radius: var(--r-m); }
     @media (max-width: 560px) { .lead-grid { grid-template-columns: 1fr; } .lead-grid dd { margin-bottom: 8px; } }
   </style>
@@ -224,7 +264,7 @@ $back = '?status=' . $filter;
 
 <?php else: ?>
   <div class="adm-top">
-    <h1 class="h2">Заявки</h1>
+    <h1 class="h2"><?= $view === 'errors' ? 'Ошибки сайта' : 'Заявки' ?></h1>
     <div class="tg-row">
       <a class="btn btn-secondary btn-small" href="../">На сайт</a>
       <form method="post" action="./">
@@ -236,6 +276,78 @@ $back = '?status=' . $filter;
 
   <?php if ($flash): ?><p class="adm-flash <?= mp_h($flash['type']) ?>" role="status"><?= mp_h($flash['text']) ?></p><?php endif; ?>
 
+  <nav class="adm-views" aria-label="Разделы">
+    <a class="btn btn-small <?= $view === 'leads' ? 'btn-primary' : 'btn-secondary' ?>" href="./"<?= $view === 'leads' ? ' aria-current="page"' : '' ?>>Заявки<span class="adm-count"><?= $counts['new'] ?></span></a>
+    <a class="btn btn-small <?= $view === 'errors' ? 'btn-primary' : 'btn-secondary' ?>" href="?view=errors"<?= $view === 'errors' ? ' aria-current="page"' : '' ?>>Ошибки<span class="adm-count"><?= $errCounts['new'] ?></span></a>
+  </nav>
+
+<?php if ($view === 'errors'): ?>
+  <nav class="seg adm-seg" aria-label="Фильтр ошибок">
+    <?php foreach (['new' => 'Новые', 'fixed' => 'Исправленные', 'ignored' => 'Не исправлять', 'all' => 'Все'] as $k => $label): ?>
+      <a href="?view=errors&amp;es=<?= $k ?>" aria-pressed="<?= $es === $k ? 'true' : 'false' ?>"<?= $es === $k ? ' aria-current="page"' : '' ?> style="padding:8px 14px;border-radius:7px;color:inherit"><?= $label ?><span class="adm-count"><?= $errCounts[$k] ?></span></a>
+    <?php endforeach; ?>
+  </nav>
+
+  <section class="adm-card" aria-labelledby="check-title">
+    <h2 class="h3" id="check-title">Проверка сайта</h2>
+    <?php if ($siteCheck === null): ?>
+      <p class="muted">Проверяет страницы, ссылки, разметку, цены и сертификат. Ту же проверку запускает нейросеть инструментом check_site.</p>
+    <?php else: ?>
+      <p>Проверено страниц: <?= (int)$siteCheck['checked']['pages'] ?>, ссылок: <?= (int)$siteCheck['checked']['links'] ?><?= isset($siteCheck['checked']['ssl_days_left']) ? ', сертификат действует ещё ' . (int)$siteCheck['checked']['ssl_days_left'] . ' дн.' : '' ?></p>
+      <?php if (!$siteCheck['problems']): ?>
+        <p class="adm-flash ok">Проблем не найдено.</p>
+      <?php else: ?>
+        <ul class="check-list">
+          <?php foreach ($siteCheck['problems'] as $pr): ?>
+            <li class="<?= $pr['level'] === 'error' ? 'is-error' : 'muted' ?>"><?= $pr['level'] === 'error' ? 'Ошибка' : 'Замечание' ?> — <?= mp_h($pr['where']) ?>: <?= mp_h($pr['text']) ?></li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
+    <?php endif; ?>
+    <div class="tg-row"><a class="btn btn-secondary btn-small" href="?view=errors&amp;es=<?= mp_h($es) ?>&amp;check=1">Проверить сайт</a></div>
+  </section>
+
+  <?php if (!$siteErrors): ?>
+    <p class="empty">Ошибок в этом разделе нет. Сюда попадают сбои скриптов в браузерах посетителей и ошибки на сервере.</p>
+  <?php endif; ?>
+
+  <?php foreach ($siteErrors as $e): ?>
+    <article class="adm-card">
+      <div class="lead-head">
+        <span class="lead-no"><?= $e['type'] === 'js' ? 'Браузер' : 'Сервер' ?> · <?= mp_h($e['file'] !== '' ? $e['file'] . ($e['line'] ? ':' . (int)$e['line'] : '') : 'файл не указан') ?></span>
+        <span class="lead-meta"><?= mp_h(date('d.m.Y H:i', strtotime($e['last_at']))) ?> · <?= mp_h(MP_ERR_STATUSES[$e['status']] ?? $e['status']) ?></span>
+      </div>
+      <p class="err-msg"><?= mp_h($e['message']) ?></p>
+      <dl class="lead-grid">
+        <dt>Сколько раз</dt><dd><?= (int)$e['hits'] ?>, впервые <?= mp_h(date('d.m.Y H:i', strtotime($e['first_at']))) ?></dd>
+        <?php if ($e['page'] !== ''): ?><dt>Страница</dt><dd><?= mp_h($e['page']) ?></dd><?php endif; ?>
+        <?php if (preg_match('~^https://github\.com/~', $e['pr_url'])): ?><dt>Исправление</dt><dd><a href="<?= mp_h($e['pr_url']) ?>" rel="noopener"><?= mp_h($e['pr_url']) ?></a></dd><?php endif; ?>
+        <dt>Отпечаток</dt><dd class="muted err-msg"><?= mp_h($e['fingerprint']) ?></dd>
+      </dl>
+      <div class="lead-actions">
+        <form method="post" action="./">
+          <input type="hidden" name="csrf" value="<?= mp_h(mp_csrf()) ?>">
+          <input type="hidden" name="id" value="<?= (int)$e['id'] ?>">
+          <input type="hidden" name="back" value="<?= mp_h($back) ?>">
+          <label class="visually-hidden" for="es<?= (int)$e['id'] ?>">Статус ошибки</label>
+          <select class="select" id="es<?= (int)$e['id'] ?>" name="status">
+            <?php foreach (MP_ERR_STATUSES as $k => $label): ?>
+              <option value="<?= $k ?>"<?= $e['status'] === $k ? ' selected' : '' ?>><?= $label ?></option>
+            <?php endforeach; ?>
+          </select>
+          <button class="btn btn-secondary btn-small" name="action" value="err_status">Сохранить статус</button>
+        </form>
+        <form method="post" action="./">
+          <input type="hidden" name="csrf" value="<?= mp_h(mp_csrf()) ?>">
+          <input type="hidden" name="id" value="<?= (int)$e['id'] ?>">
+          <input type="hidden" name="back" value="<?= mp_h($back) ?>">
+          <button class="btn btn-danger btn-small" name="action" value="err_delete">Удалить запись</button>
+        </form>
+      </div>
+    </article>
+  <?php endforeach; ?>
+
+<?php else: ?>
   <nav class="seg adm-seg" aria-label="Фильтр по статусу">
     <?php foreach (['new' => 'Новые', 'work' => 'В работе', 'done' => 'Закрытые', 'all' => 'Все'] as $k => $label): ?>
       <a href="?status=<?= $k ?>" aria-pressed="<?= $filter === $k ? 'true' : 'false' ?>"<?= $filter === $k ? ' aria-current="page"' : '' ?> style="padding:8px 14px;border-radius:7px;color:inherit"><?= $label ?><span class="adm-count"><?= $counts[$k] ?></span></a>
@@ -249,7 +361,7 @@ $back = '?status=' . $filter;
   <?php foreach ($leads as $l): ?>
     <article class="adm-card">
       <div class="lead-head">
-        <span class="lead-no">№<?= (int)$l['id'] ?> · <?= mp_h($l['name']) ?></span>
+        <span class="lead-no">№<?= (int)$l['id'] ?> · <?= mp_h($l['name']) ?><?php if (($l['source'] ?? 'site') === 'mcp'): ?><span class="badge">через нейросеть</span><?php endif; ?></span>
         <span class="lead-meta"><?= mp_h(date('d.m.Y H:i', strtotime($l['created_at']))) ?> · <?= mp_h(MP_STATUSES[$l['status']] ?? $l['status']) ?></span>
       </div>
       <dl class="lead-grid">
@@ -318,6 +430,7 @@ $back = '?status=' . $filter;
       </form>
     <?php endif; ?>
   </section>
+<?php endif; ?>
 
 <?php endif; ?>
 </main>

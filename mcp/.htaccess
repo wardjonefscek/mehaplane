@@ -1,0 +1,4 @@
+# Передаём PHP заголовок Authorization (нужен служебному адресу /mcp/service/)
+<IfModule mod_setenvif.c>
+  SetEnvIf Authorization "(.+)" HTTP_AUTHORIZATION=$1
+</IfModule>

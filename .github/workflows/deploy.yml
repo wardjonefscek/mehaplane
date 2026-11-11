@@ -1,0 +1,71 @@
+name: Выкладка на хостинг
+
+# Запускается после слияния в main. Файл api/config.php с паролями на хостинге не трогает:
+# его нет в репозитории и он исключён из выкладки. Ничего на хостинге не удаляет.
+#
+# Секреты репозитория (Settings → Secrets and variables → Actions):
+#   SSH_HOST    — адрес сервера, например wardenhmehaplane.ru
+#   SSH_USER    — логин аккаунта хостинга
+#   SSH_KEY     — закрытый ключ, созданный только для выкладки
+#   DEPLOY_PATH — папка сайта на сервере, например domains/wardenhmehaplane.ru/public_html
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo_mysql, openssl
+          coverage: none
+
+      - name: Проверки перед выкладкой
+        run: |
+          status=0
+          while IFS= read -r f; do php -l "$f" > /dev/null || status=1; done < <(find . -name '*.php' -not -path './.git/*')
+          [ "$status" -eq 0 ]
+          node tools/test-pricing.js
+          php tools/ci-check.php
+
+      - name: Ключ для входа на сервер
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+        run: |
+          if [ -z "$SSH_KEY" ] || [ -z "$SSH_HOST" ]; then echo "Не заданы секреты SSH_KEY и SSH_HOST"; exit 1; fi
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2> /dev/null
+
+      - name: Выкладка
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          if [ -z "$SSH_USER" ] || [ -z "$DEPLOY_PATH" ]; then echo "Не заданы секреты SSH_USER и DEPLOY_PATH"; exit 1; fi
+          rsync -rltz --itemize-changes \
+            --exclude='.git/' --exclude='.github/' --exclude='.gitignore' \
+            --exclude='tools/' --exclude='README.md' \
+            --exclude='api/config.php' \
+            --exclude='/offer.html' --exclude='/privacy.html' --exclude='/consent.html' \
+            -e "ssh -i ~/.ssh/deploy_key -o BatchMode=yes" \
+            ./ "$SSH_USER@$SSH_HOST:$DEPLOY_PATH/"
+
+      - name: Убрать ключ
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
