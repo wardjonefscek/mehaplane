@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Калькулятор стоимости проекта RC-самолёта | mehaplane</title>
+  <meta name="description" content="Рассчитайте стоимость и срок проекта радиоуправляемого самолёта: тренер, нестандартная схема или конвертоплан. Размах, материал, документация — цена пересчитывается сразу.">
+  <link rel="canonical" href="https://wardenhmehaplane.ru/calculator.html">
+  <meta name="theme-color" content="#0f0f12">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="mehaplane">
+  <meta property="og:url" content="https://wardenhmehaplane.ru/calculator.html">
+  <meta property="og:title" content="Калькулятор стоимости проекта RC-самолёта — mehaplane">
+  <meta property="og:description" content="Выберите тариф, размах и материал — цена и срок проекта пересчитываются сразу.">
+  <meta property="og:image" content="https://wardenhmehaplane.ru/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/golos-text-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://wardenhmehaplane.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Калькулятор стоимости",
+          "item": "https://wardenhmehaplane.ru/calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Калькулятор стоимости проекта RC-самолёта",
+      "url": "https://wardenhmehaplane.ru/calculator.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Любая, в браузере",
+      "inLanguage": "ru",
+      "offers": {
+        "@type": "Offer",
+        "price": 0,
+        "priceCurrency": "RUB"
+      },
+      "provider": {
+        "@id": "https://wardenhmehaplane.ru/#org"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к калькулятору</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c1.05 0 1.5 1.25 1.5 2.7v3.5l8.3 2.3v2.3l-8.3-1.25v5.5l2.7 1.85v1.65L12 19.8l-4.2.95V19.1l2.7-1.85v-5.5l-8.3 1.25V10.7l8.3-2.3V4.9c0-1.45.45-2.7 1.5-2.7z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3.5 5.5 8l4.5 4.5"/></symbol>
+  </svg>
+
+  <header class="header" id="top">
+    <div class="wrap header-in">
+      <a class="logo" href="index.html" aria-label="mehaplane — на главную">
+        <svg aria-hidden="true"><use href="#i-logo"/></svg>
+        mehaplane
+      </a>
+      <nav class="nav" id="nav" aria-label="Основное меню">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html#tarify">Тарифы</a></li>
+          <li><a class="nav-link" href="index.html#raboty">Работы</a></li>
+          <li><a class="nav-link" href="index.html#rezultat">Что вы получите</a></li>
+          <li><a class="nav-link" href="index.html#etapy">Как работаем</a></li>
+          <li><a class="nav-link" href="index.html#voprosy">Вопросы</a></li>
+          <li><a class="nav-link" href="calculator.html" aria-current="page">Калькулятор</a></li>
+        </ul>
+        <div class="nav-extra">
+          <a class="btn btn-primary btn-block" href="index.html#zayavka">Оставить заявку</a>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-small" href="index.html#zayavka">Оставить заявку</a>
+      </div>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main" class="calc-page">
+    <div class="wrap">
+      <div class="calc-head">
+        <a class="back-link" href="index.html"><svg aria-hidden="true" width="16" height="16"><use href="#i-back"/></svg>На главную</a>
+        <h1 class="h1">Калькулятор стоимости проекта</h1>
+        <p class="lead">Выберите тариф и параметры — цена и срок пересчитываются сразу. Расчёт предварительный, итоговую сумму фиксируем в техническом задании.</p>
+      </div>
+
+      <div class="calc-grid">
+        <form class="calc-form" id="calc-form" novalidate>
+          <fieldset class="fs">
+            <legend class="fs-legend">Тариф</legend>
+            <div class="tier-pick" id="c-tier"></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Размах крыла</legend>
+            <div class="range-wrap">
+              <div class="range-top">
+                <label for="c-span" class="muted small">Перетащите ползунок</label>
+                <output class="range-value" id="c-span-out" for="c-span">1 400 <small>мм</small></output>
+              </div>
+              <input class="range" type="range" id="c-span" name="span">
+              <div class="range-scale"><span id="c-span-min">600 мм</span><span id="c-span-max">3 000 мм</span></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs" data-only="special">
+            <legend class="fs-legend">Схема</legend>
+            <div class="pills" id="c-scheme"></div>
+          </fieldset>
+
+          <fieldset class="fs" data-only="vtol">
+            <legend class="fs-legend">Моторы и механизм поворота</legend>
+            <div class="vtol-groups" style="display:grid;gap:18px">
+              <div>
+                <p class="field-label" id="lbl-motors" style="margin-bottom:8px">Поворотных моторов</p>
+                <div class="pills" id="c-motors" role="radiogroup" aria-labelledby="lbl-motors"></div>
+              </div>
+              <div>
+                <p class="field-label" id="lbl-tilt" style="margin-bottom:8px">Что поворачивается</p>
+                <div class="pills" id="c-tilt" role="radiogroup" aria-labelledby="lbl-tilt"></div>
+              </div>
+              <div>
+                <p class="field-label" id="lbl-drive" style="margin-bottom:8px">Привод поворота</p>
+                <div class="pills" id="c-drive" role="radiogroup" aria-labelledby="lbl-drive"></div>
+              </div>
+              <div class="rows" id="c-fc"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Оперение и механизация</legend>
+            <div class="rows" id="c-options"></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Материал</legend>
+            <p class="fs-note">Влияет на конструкцию силового набора и формат файлов.</p>
+            <div class="rows" id="c-material"></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Электроника</legend>
+            <div class="rows" id="c-electronics"></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Документация</legend>
+            <div class="rows" id="c-docs"></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend class="fs-legend">Срок</legend>
+            <div class="pills" id="c-urgency"></div>
+          </fieldset>
+        </form>
+
+        <aside class="calc-side" aria-label="Результат расчёта">
+          <figure class="viewport calc-view">
+            <div class="viewport-bar">
+              <span class="viewport-title">Вид сверху</span>
+              <span class="small" id="c-view-name">Тренер</span>
+            </div>
+            <div class="viewport-canvas"><svg id="c-svg" role="img" aria-label="Чертёж самолёта с выбранными параметрами"></svg></div>
+          </figure>
+
+          <section class="summary" id="c-summary" aria-labelledby="c-total-label">
+            <div class="summary-total">
+              <span class="total-label" id="c-total-label">Предварительная стоимость</span>
+              <output class="total-value" id="c-total" aria-live="polite">12 000 ₽</output>
+              <span class="total-days" id="c-days">≈ 10 рабочих дней</span>
+            </div>
+            <div class="summary-actions">
+              <button class="btn btn-primary btn-block" type="button" id="c-order">Оформить заявку с этим расчётом</button>
+              <button class="btn btn-secondary btn-block" type="button" id="c-reset">Сбросить параметры</button>
+            </div>
+            <div class="summary-lines" id="c-lines"></div>
+            <p class="summary-note">Расчёт предварительный и не является офертой.</p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div class="calc-bar" id="calc-bar">
+    <div class="calc-bar-total"><small>Предварительно</small><strong id="c-bar-total">12 000 ₽</strong></div>
+    <button class="btn btn-primary" type="button" id="c-bar-order">Оформить заявку</button>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="logo" href="index.html"><svg aria-hidden="true"><use href="#i-logo"/></svg>mehaplane</a>
+          <p>Проектирование радиоуправляемых самолётов под задачу заказчика.</p>
+        </div>
+        <div>
+          <p class="footer-title">Разделы</p>
+          <ul>
+            <li><a href="index.html#tarify">Тарифы</a></li>
+            <li><a href="index.html#raboty">Работы</a></li>
+            <li><a href="calculator.html">Калькулятор</a></li>
+            <li><a href="index.html#zayavka">Заявка</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Документы</p>
+          <ul>
+            <li><a href="offer.html">Публичная оферта</a></li>
+            <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+            <li><a href="consent.html">Согласие на обработку персональных данных</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Контакты</p>
+          <ul>
+            <li><a data-tg href="https://t.me/mehaplane">@mehaplane</a></li>
+            <li><a data-email href="mailto:hello@mehaplane.ru">hello@mehaplane.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 mehaplane</span>
+        <span class="footer-note">Учебный проект: оплата через сайт не принимается</span>
+        <a href="#top">Наверх</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js?v=3"></script>
+  <script src="assets/js/plane.js?v=3"></script>
+  <script src="assets/js/common.js?v=3"></script>
+  <script src="assets/js/calc.js?v=3"></script>
+</body>
+</html>

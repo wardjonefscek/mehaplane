@@ -1,0 +1,4 @@
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .txt .xml .html .css .js
+</IfModule>

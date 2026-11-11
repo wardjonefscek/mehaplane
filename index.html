@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Проектирование радиоуправляемых самолётов на заказ | mehaplane</title>
+  <meta name="description" content="Спроектируем RC-самолёт под вашу электронику: тренер от 12 000 ₽, нестандартная схема, конвертоплан. Чертежи PDF и DXF, 3D-модель, расчёт центровки. Цена онлайн.">
+  <link rel="canonical" href="https://wardenhmehaplane.ru/">
+  <meta name="theme-color" content="#0f0f12">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="mehaplane">
+  <meta property="og:url" content="https://wardenhmehaplane.ru/">
+  <meta property="og:title" content="Проектирование RC-самолётов на заказ — mehaplane">
+  <meta property="og:description" content="Тренеры, нестандартные схемы и конвертопланы под вашу электронику. Чертежи, 3D-модели и расчёт центровки. Цена в калькуляторе.">
+  <meta property="og:image" content="https://wardenhmehaplane.ru/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Чертёж радиоуправляемого самолёта, вид сверху, и надпись mehaplane">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/golos-text-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wardenhmehaplane.ru/#site",
+      "url": "https://wardenhmehaplane.ru/",
+      "name": "mehaplane",
+      "inLanguage": "ru",
+      "publisher": {
+        "@id": "https://wardenhmehaplane.ru/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wardenhmehaplane.ru/#org",
+      "name": "mehaplane",
+      "url": "https://wardenhmehaplane.ru/",
+      "logo": "https://wardenhmehaplane.ru/assets/img/favicon.svg",
+      "description": "Студия проектирования радиоуправляемых самолётов под задачу и электронику заказчика: тренеры, нестандартные схемы, конвертопланы.",
+      "email": "hello@mehaplane.ru",
+      "sameAs": [
+        "https://t.me/mehaplane"
+      ],
+      "knowsAbout": [
+        "проектирование авиамоделей",
+        "радиоуправляемые самолёты",
+        "конвертопланы",
+        "расчёт центровки",
+        "чертежи для лазерной резки",
+        "3D-печать авиамоделей"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://wardenhmehaplane.ru/#trener",
+      "name": "Проект RC-самолёта «Тренер»",
+      "description": "Учебный самолёт под электронику заказчика: компоновка, чертежи PDF 1:1, расчёт центровки, список комплектующих. Срок от 10 рабочих дней.",
+      "serviceType": "Проектирование радиоуправляемых самолётов",
+      "provider": {
+        "@id": "https://wardenhmehaplane.ru/#org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "url": "https://wardenhmehaplane.ru/calculator.html#trener",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": 12000,
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 12000,
+          "priceCurrency": "RUB"
+        },
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://wardenhmehaplane.ru/#shema",
+      "name": "Проект RC-самолёта нестандартной схемы",
+      "description": "Летающее крыло, утка, тандем, двухбалочная схема или стелс-стилистика: аэродинамический расчёт, 3D-модель STEP, проработка механизации. Срок от 18 рабочих дней.",
+      "serviceType": "Проектирование радиоуправляемых самолётов",
+      "provider": {
+        "@id": "https://wardenhmehaplane.ru/#org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "url": "https://wardenhmehaplane.ru/calculator.html#shema",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": 30000,
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 30000,
+          "priceCurrency": "RUB"
+        },
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://wardenhmehaplane.ru/#vtol",
+      "name": "Проект RC-конвертоплана",
+      "description": "Вертикальный взлёт на поворотных моторах и переход в самолётный полёт: механизм поворота, расчёт режимов висения и перехода. Срок от 30 рабочих дней.",
+      "serviceType": "Проектирование радиоуправляемых самолётов",
+      "provider": {
+        "@id": "https://wardenhmehaplane.ru/#org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "url": "https://wardenhmehaplane.ru/calculator.html#vtol",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": 75000,
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 75000,
+          "priceCurrency": "RUB"
+        },
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://wardenhmehaplane.ru/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит спроектировать радиоуправляемый самолёт?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Проект тренера под вашу электронику стоит от 12 000 ₽, нестандартной схемы — от 30 000 ₽, конвертоплана — от 75 000 ₽. Итог зависит от размаха, материала и состава документации: калькулятор на сайте показывает его сразу, а окончательную сумму мы фиксируем в техническом задании."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем проект на заказ лучше готовых чертежей?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Готовые чертежи рассчитаны на мотор, аккумулятор и материал, которые выбрал их автор. Мы проектируем под вашу электронику и технологию: считаем центровку с учётом массы ваших компонентов и готовим файлы для резки, печати или ручной сборки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Вы строите самолёт или только проектируете?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Проектируем: готовим чертежи, 3D-модели и расчёты, по которым самолёт собирается своими руками или на производстве. Изготовление прототипа обсуждаем отдельно."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно использовать мою электронику?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Пришлите список: мотор, регулятор, аккумулятор, сервоприводы, полётный контроллер. Мы скомпонуем самолёт под них и посчитаем центровку с учётом их массы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно заказать проект конвертоплана с вертикальным взлётом?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, это тариф «Конвертоплан»: самолёт взлетает вертикально на поворотных моторах и переходит в горизонтальный полёт. Проектируем механизм поворота мотогондол или всего крыла и считаем режимы висения и перехода. По желанию помогаем с настройкой полётного контроллера."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Из каких материалов можно строить?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Потолочная плитка и депрон, EPP, бальза со стеклотекстолитом, 3D-печать из LW-PLA, стекло- и углепластик. Материал влияет на цену и состав файлов — это учтено в калькуляторе."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько длится проект?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "От 10 рабочих дней для тренера до 30 и больше для конвертоплана. Срок зависит от схемы и состава документации и фиксируется в техническом задании."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Цена в калькуляторе — окончательная?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет, это предварительный расчёт. Окончательную сумму мы называем после разбора задачи и фиксируем в техническом задании. Дороже она станет, только если вы расширите задачу."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c1.05 0 1.5 1.25 1.5 2.7v3.5l8.3 2.3v2.3l-8.3-1.25v5.5l2.7 1.85v1.65L12 19.8l-4.2.95V19.1l2.7-1.85v-5.5l-8.3 1.25V10.7l8.3-2.3V4.9c0-1.45.45-2.7 1.5-2.7z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M2.5 5.5a1.5 1.5 0 0 1 1.5-1.5h3.6l1.8 2h6.6a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5H4a1.5 1.5 0 0 1-1.5-1.5z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M5 2.5h6.5L15.5 6.5v11H5zM11.5 2.5v4h4"/></symbol>
+    <symbol id="i-left" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 3.5 5.5 8l4.5 4.5"/></symbol>
+    <symbol id="i-right" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 3.5 10.5 8 6 12.5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 16 16"><path fill="currentColor" d="M4.5 3h2.2v10H4.5zM9.3 3h2.2v10H9.3z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path fill="currentColor" d="M5 2.8v10.4L13 8z"/></symbol>
+    <symbol id="i-up" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></symbol>
+  </svg>
+
+  <header class="header" id="top">
+    <div class="wrap header-in">
+      <a class="logo" href="index.html" aria-label="mehaplane — на главную">
+        <svg aria-hidden="true"><use href="#i-logo"/></svg>
+        mehaplane
+      </a>
+      <nav class="nav" id="nav" aria-label="Основное меню">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#tarify">Тарифы</a></li>
+          <li><a class="nav-link" href="#raboty">Работы</a></li>
+          <li><a class="nav-link" href="#rezultat">Что вы получите</a></li>
+          <li><a class="nav-link" href="#etapy">Как работаем</a></li>
+          <li><a class="nav-link" href="#voprosy">Вопросы</a></li>
+          <li><a class="nav-link" href="calculator.html">Калькулятор</a></li>
+        </ul>
+        <div class="nav-extra">
+          <a class="btn btn-primary btn-block" href="#zayavka">Оставить заявку</a>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-small" href="#zayavka">Оставить заявку</a>
+      </div>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Вступление -->
+    <section class="intro">
+      <div class="wrap intro-in">
+        <div class="intro-text">
+          <h1 class="h1">Проектируем радиоуправляемые самолёты под вашу задачу</h1>
+          <p class="lead">Чертежи, 3D-модели и расчёты под электронику, которая у вас уже есть. Отвечаем в течение рабочего дня, первая консультация бесплатно.</p>
+        </div>
+        <div class="intro-actions">
+          <a class="btn btn-primary" href="calculator.html">Рассчитать стоимость</a>
+          <a class="btn btn-secondary" href="#raboty">Смотреть работы</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Карусель тарифов -->
+    <section class="featured" aria-roledescription="карусель" aria-label="Тарифы">
+      <div class="wrap">
+        <div class="feat" id="feat">
+          <div class="feat-main" id="feat-main">
+            <article class="slide is-active" data-tier="trainer" role="group" aria-roledescription="слайд" aria-label="1 из 3">
+              <div class="slide-art"><svg data-slide="trainer" aria-hidden="true"></svg></div>
+              <div class="slide-body">
+                <span class="slide-label">Тариф</span>
+                <h2 class="slide-title">Тренер</h2>
+                <p class="slide-text">Классический учебный самолёт под вашу электронику: чертежи, расчёт центровки и список комплектующих.</p>
+                <p class="slide-price"><small>от</small> <span data-price="trainer">12 000</span> ₽</p>
+                <div class="slide-actions">
+                  <a class="btn btn-primary" href="calculator.html#trener">Рассчитать</a>
+                  <a class="btn btn-secondary" href="#tarify">Подробнее</a>
+                </div>
+              </div>
+            </article>
+            <article class="slide" data-tier="special" role="group" aria-roledescription="слайд" aria-label="2 из 3">
+              <div class="slide-art"><svg data-slide="special" aria-hidden="true"></svg></div>
+              <div class="slide-body">
+                <span class="slide-label">Тариф</span>
+                <h2 class="slide-title">Нестандартная схема</h2>
+                <p class="slide-text">Летающее крыло, утка, тандем или стелс-стилистика — когда нужна особая аэродинамика или внешний вид.</p>
+                <p class="slide-price"><small>от</small> <span data-price="special">30 000</span> ₽</p>
+                <div class="slide-actions">
+                  <a class="btn btn-primary" href="calculator.html#shema">Рассчитать</a>
+                  <a class="btn btn-secondary" href="#tarify">Подробнее</a>
+                </div>
+              </div>
+            </article>
+            <article class="slide" data-tier="vtol" role="group" aria-roledescription="слайд" aria-label="3 из 3">
+              <div class="slide-art"><svg data-slide="vtol" aria-hidden="true"></svg></div>
+              <div class="slide-body">
+                <span class="slide-label">Тариф</span>
+                <h2 class="slide-title">Конвертоплан</h2>
+                <p class="slide-text">Вертикальный взлёт на поворотных моторах и переход в самолётный полёт. Механизм поворота и расчёт режимов висения.</p>
+                <p class="slide-price"><small>от</small> <span data-price="vtol">75 000</span> ₽</p>
+                <div class="slide-actions">
+                  <a class="btn btn-primary" href="calculator.html#vtol">Рассчитать</a>
+                  <a class="btn btn-secondary" href="#tarify">Подробнее</a>
+                </div>
+              </div>
+            </article>
+            <button class="feat-pause" type="button" id="feat-pause" aria-label="Остановить прокрутку слайдов">
+              <svg aria-hidden="true" class="i-pause"><use href="#i-pause"/></svg>
+              <svg aria-hidden="true" class="i-play"><use href="#i-play"/></svg>
+            </button>
+          </div>
+
+          <div class="feat-list" role="group" aria-label="Выбор слайда">
+            <button class="feat-item is-active" type="button" data-go="0" aria-current="true">
+              <span class="feat-progress"></span>
+              <span class="feat-thumb"><svg data-thumb="trainer" aria-hidden="true"></svg></span>
+              <span class="feat-txt"><span class="feat-name">Тренер</span><span class="feat-price">от <span data-price="trainer">12 000</span> ₽</span></span>
+            </button>
+            <button class="feat-item" type="button" data-go="1">
+              <span class="feat-progress"></span>
+              <span class="feat-thumb"><svg data-thumb="special" aria-hidden="true"></svg></span>
+              <span class="feat-txt"><span class="feat-name">Нестандартная схема</span><span class="feat-price">от <span data-price="special">30 000</span> ₽</span></span>
+            </button>
+            <button class="feat-item" type="button" data-go="2">
+              <span class="feat-progress"></span>
+              <span class="feat-thumb"><svg data-thumb="vtol" aria-hidden="true"></svg></span>
+              <span class="feat-txt"><span class="feat-name">Конвертоплан</span><span class="feat-price">от <span data-price="vtol">75 000</span> ₽</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section class="section" id="tarify">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Тарифы</h2>
+          <p class="lead">Цена зависит от схемы, размаха, материала и состава документации. Точную сумму покажет калькулятор.</p>
+        </div>
+
+        <div class="tiers">
+          <article class="tier" data-tier="trainer">
+            <div class="tier-head">
+              <div class="tier-cover viewport-canvas"><svg data-cover="trainer" aria-hidden="true"></svg></div>
+              <h3 class="h3">Тренер</h3>
+              <p class="muted">Классический учебный самолёт под электронику заказчика.</p>
+              <p class="tier-price num"><small>от</small> <span data-price="trainer">12 000</span> ₽</p>
+            </div>
+            <dl class="tier-row"><dt>Подходит, если</dt><dd>Нужен первый самолёт, учебные полёты или платформа под автопилот.</dd></dl>
+            <dl class="tier-row"><dt>Входит</dt><dd><ul>
+              <li>Компоновка под вашу электронику</li>
+              <li>Чертежи PDF в масштабе 1:1</li>
+              <li>Расчёт центровки</li>
+              <li>Список комплектующих</li>
+            </ul></dd></dl>
+            <dl class="tier-row"><dt>Срок</dt><dd>от <span data-days="trainer">10</span> рабочих дней</dd></dl>
+            <div class="tier-foot"><a class="btn btn-primary btn-block" href="calculator.html#trener">Рассчитать «Тренер»</a></div>
+          </article>
+
+          <article class="tier" data-tier="special">
+            <div class="tier-head">
+              <div class="tier-cover viewport-canvas"><svg data-cover="special" aria-hidden="true"></svg></div>
+              <h3 class="h3">Нестандартная схема</h3>
+              <p class="muted">Летающее крыло, утка, тандем, двухбалочная схема или стелс-стилистика.</p>
+              <p class="tier-price num"><small>от</small> <span data-price="special">30 000</span> ₽</p>
+            </div>
+            <dl class="tier-row"><dt>Подходит, если</dt><dd>Нужна особая аэродинамика, компоновка или внешний вид под узкую задачу.</dd></dl>
+            <dl class="tier-row"><dt>Входит</dt><dd><ul>
+              <li>Всё из тарифа «Тренер»</li>
+              <li>Аэродинамический расчёт схемы</li>
+              <li>3D-модель STEP</li>
+              <li>Проработка механизации</li>
+            </ul></dd></dl>
+            <dl class="tier-row"><dt>Срок</dt><dd>от <span data-days="special">18</span> рабочих дней</dd></dl>
+            <div class="tier-foot"><a class="btn btn-primary btn-block" href="calculator.html#shema">Рассчитать «Нестандартную»</a></div>
+          </article>
+
+          <article class="tier" data-tier="vtol">
+            <div class="tier-head">
+              <div class="tier-cover viewport-canvas"><svg data-cover="vtol" aria-hidden="true"></svg></div>
+              <h3 class="h3">Конвертоплан</h3>
+              <p class="muted">Вертикальный взлёт на поворотных моторах и переход в самолётный полёт.</p>
+              <p class="tier-price num"><small>от</small> <span data-price="vtol">75 000</span> ₽</p>
+            </div>
+            <dl class="tier-row"><dt>Подходит, если</dt><dd>Нужно взлетать и садиться без полосы, на небольшой площадке.</dd></dl>
+            <dl class="tier-row"><dt>Входит</dt><dd><ul>
+              <li>Всё из тарифа «Нестандартная схема»</li>
+              <li>Механизм поворота моторов или крыла</li>
+              <li>Расчёт режимов висения и перехода</li>
+              <li>По желанию — помощь с настройкой полётного контроллера</li>
+            </ul></dd></dl>
+            <dl class="tier-row"><dt>Срок</dt><dd>от <span data-days="vtol">30</span> рабочих дней</dd></dl>
+            <div class="tier-foot"><a class="btn btn-primary btn-block" href="calculator.html#vtol">Рассчитать «Конвертоплан»</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Витрина -->
+    <section class="section" id="raboty">
+      <div class="wrap">
+        <div class="shelf-head">
+          <h2 class="h2">Работы</h2>
+          <div class="shelf-tools">
+            <div class="seg" role="group" aria-label="Фильтр работ по тарифу" id="works-filter">
+              <button type="button" data-filter="all" aria-pressed="true">Все</button>
+              <button type="button" data-filter="trainer" aria-pressed="false">Тренер</button>
+              <button type="button" data-filter="special" aria-pressed="false">Нестандартная</button>
+              <button type="button" data-filter="vtol" aria-pressed="false">Конвертоплан</button>
+            </div>
+            <div class="shelf-nav">
+              <button class="shelf-btn" type="button" id="shelf-prev" aria-label="Прокрутить работы назад"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+              <button class="shelf-btn" type="button" id="shelf-next" aria-label="Прокрутить работы вперёд"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <p class="section-lead">Проекты в работе и готовые. Нажмите на проект, чтобы посмотреть характеристики.</p>
+        <div class="shelf-track" id="works-grid">
+          <!-- карточки работ собираются из assets/js/config.js -->
+          <div class="work-cta">
+            <h3 class="h3">Нужна своя схема?</h3>
+            <p class="muted">Опишите задачу — предложим компоновку и посчитаем стоимость.</p>
+            <a class="btn btn-secondary" href="calculator.html">Открыть калькулятор</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="dialog" id="work-dialog" aria-labelledby="work-dialog-title">
+      <div class="dialog-head">
+        <h3 class="h3" id="work-dialog-title">Проект</h3>
+        <button class="dialog-close" type="button" data-close aria-label="Закрыть">×</button>
+      </div>
+      <div class="dialog-pic viewport-canvas"><svg id="work-dialog-svg" role="img" aria-label="Чертёж проекта"></svg></div>
+      <div class="dialog-body">
+        <p class="muted" id="work-dialog-text"></p>
+        <dl class="specs" id="work-dialog-specs"></dl>
+        <div class="dialog-actions">
+          <button class="btn btn-primary" type="button" id="work-dialog-order">Хочу похожий</button>
+          <button class="btn btn-secondary" type="button" data-close>Закрыть</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Что вы получите -->
+    <section class="section" id="rezultat">
+      <div class="wrap">
+       <div class="section-panel deliver-grid">
+        <div class="section-head">
+          <h2 class="h2">Что вы получите</h2>
+          <p class="lead">Комплект файлов, по которому самолёт можно построить без нас: вырезать, напечатать и собрать.</p>
+          <p class="muted">Форматы подбираем под вашу технологию — ручную сборку, лазерную или ЧПУ-резку, 3D-печать.</p>
+        </div>
+        <div class="tree" aria-label="Состав проекта">
+          <div class="tree-root"><svg aria-hidden="true" width="20" height="20"><use href="#i-folder"/></svg> mehaplane-проект</div>
+          <ul class="tree-list">
+            <li class="tree-item">
+              <span class="tree-name"><svg aria-hidden="true"><use href="#i-folder"/></svg>Чертежи <span class="ext">PDF, DXF</span></span>
+              <span class="tree-desc">Общий вид и детали в масштабе 1:1 для распечатки, контуры для резки.</span>
+            </li>
+            <li class="tree-item">
+              <span class="tree-name"><svg aria-hidden="true"><use href="#i-folder"/></svg>3D-модель <span class="ext">STEP, STL</span></span>
+              <span class="tree-desc">Сборка для доработки в CAD и файлы для печати деталей.</span>
+            </li>
+            <li class="tree-item">
+              <span class="tree-name"><svg aria-hidden="true"><use href="#i-file"/></svg>Спецификация <span class="ext">XLSX</span></span>
+              <span class="tree-desc">Материалы, крепёж и электроника с количеством и массой.</span>
+            </li>
+            <li class="tree-item">
+              <span class="tree-name"><svg aria-hidden="true"><use href="#i-file"/></svg>Расчёт <span class="ext">PDF</span></span>
+              <span class="tree-desc">Центровка, нагрузка на крыло, подбор мотора и винта.</span>
+            </li>
+            <li class="tree-item">
+              <span class="tree-name"><svg aria-hidden="true"><use href="#i-file"/></svg>Инструкция по сборке <span class="ext">PDF</span></span>
+              <span class="tree-desc">Порядок сборки по шагам со схемами. По желанию.</span>
+            </li>
+          </ul>
+        </div>
+       </div>
+      </div>
+    </section>
+
+    <!-- Этапы -->
+    <section class="section" id="etapy">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Как мы работаем</h2>
+          <p class="lead">Цену и срок фиксируем до начала работ. Каждый этап согласуем с вами.</p>
+        </div>
+        <ol class="steps">
+          <li class="step"><h3 class="h3">Заявка</h3><p>Вы описываете задачу и электронику, которая уже есть.</p></li>
+          <li class="step"><h3 class="h3">Техническое задание</h3><p>Уточняем размах, массу, материалы и условия полётов. Фиксируем цену и срок.</p></li>
+          <li class="step"><h3 class="h3">Эскиз и компоновка</h3><p>Согласуем общий вид и размещение электроники.</p></li>
+          <li class="step"><h3 class="h3">Расчёты</h3><p>Считаем центровку, площадь крыла, нагрузку и винтомоторную группу.</p></li>
+          <li class="step"><h3 class="h3">3D-модель и чертежи</h3><p>Готовим файлы под вашу технологию: резку, печать или ручную сборку.</p></li>
+          <li class="step"><h3 class="h3">Передача и поддержка</h3><p>Отдаём комплект файлов и отвечаем на вопросы до первого полёта.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Почему mehaplane -->
+    <section class="section" id="pochemu">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Почему mehaplane, а не готовые чертежи</h2>
+          <p class="lead">mehaplane — студия проектирования радиоуправляемых самолётов. Проектируем тренеры, нестандартные схемы и конвертопланы под электронику заказчика и передаём чертежи PDF и DXF, 3D-модели STEP и STL и расчёт центровки. Стоимость — от 12 000 ₽, срок — от 10 рабочих дней.</p>
+        </div>
+        <div class="compare" role="region" aria-label="Сравнение с готовыми чертежами" tabindex="0">
+          <table class="compare-table">
+            <caption class="visually-hidden">Чем проект mehaplane отличается от бесплатных и покупных готовых чертежей</caption>
+            <thead>
+              <tr><th scope="col"><span class="visually-hidden">Параметр</span></th><th scope="col" class="is-us">Проект mehaplane</th><th scope="col">Готовые чертежи из магазинов</th><th scope="col">Бесплатные чертежи с форумов</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Под вашу электронику</th><td class="is-us">Да, компонуем ваш мотор, аккумулятор и контроллер</td><td>Нет, конструкция под комплект автора</td><td>Нет, конструкция под комплект автора</td></tr>
+              <tr><th scope="row">Расчёт центровки</th><td class="is-us">Считаем с массой ваших компонентов</td><td>Обычно есть, но для комплекта автора</td><td>Если автор указал точку</td></tr>
+              <tr><th scope="row">Форматы файлов</th><td class="is-us">PDF, DXF, STEP и STL под вашу технологию</td><td>PDF и DXF, иногда STL</td><td>Чаще всего PDF для распечатки</td></tr>
+              <tr><th scope="row">Нестандартные схемы и конвертопланы</th><td class="is-us">Проектируем под вашу задачу</td><td>Небольшой выбор готовых моделей</td><td>Редко, без проверки расчётом</td></tr>
+              <tr><th scope="row">Помощь до первого полёта</th><td class="is-us">Отвечаем на вопросы до первого полёта</td><td>Зависит от продавца</td><td>Вопросы на форуме</td></tr>
+              <tr><th scope="row">Цена</th><td class="is-us">От 12 000 ₽, точный расчёт в калькуляторе</td><td>Фиксированная, обычно недорого</td><td>Бесплатно</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare-hint small muted">Таблицу можно листать вбок</p>
+        <div class="pros">
+          <div class="pro"><h3 class="h3">Под вашу электронику</h3><p>Не заставляем покупать новый комплект: компонуем мотор, аккумулятор и полётный контроллер, которые у вас уже есть.</p></div>
+          <div class="pro"><h3 class="h3">Расчёт, а не «на глаз»</h3><p>Центровку и нагрузку на крыло считаем до первого реза, а не подбираем грузиками после сборки.</p></div>
+          <div class="pro"><h3 class="h3">Файлы под вашу технологию</h3><p>DXF для резки, STL для печати, PDF для ручной сборки — без переделки чертежей на месте.</p></div>
+          <div class="pro"><h3 class="h3">Цена известна заранее</h3><p>Калькулятор показывает стоимость до заявки, итоговую сумму фиксируем в техническом задании.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Вопросы -->
+    <section class="section" id="voprosy">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Вопросы и ответы</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Сколько стоит спроектировать радиоуправляемый самолёт?</summary>
+            <p class="faq-answer">Проект тренера под вашу электронику стоит от 12 000 ₽, нестандартной схемы — от 30 000 ₽, конвертоплана — от 75 000 ₽. Итог зависит от размаха, материала и состава документации: калькулятор на сайте показывает его сразу, а окончательную сумму мы фиксируем в техническом задании.</p>
+          </details>
+          <details>
+            <summary>Чем проект на заказ лучше готовых чертежей?</summary>
+            <p class="faq-answer">Готовые чертежи рассчитаны на мотор, аккумулятор и материал, которые выбрал их автор. Мы проектируем под вашу электронику и технологию: считаем центровку с учётом массы ваших компонентов и готовим файлы для резки, печати или ручной сборки.</p>
+          </details>
+          <details>
+            <summary>Вы строите самолёт или только проектируете?</summary>
+            <p class="faq-answer">Проектируем: готовим чертежи, 3D-модели и расчёты, по которым самолёт собирается своими руками или на производстве. Изготовление прототипа обсуждаем отдельно.</p>
+          </details>
+          <details>
+            <summary>Можно использовать мою электронику?</summary>
+            <p class="faq-answer">Да. Пришлите список: мотор, регулятор, аккумулятор, сервоприводы, полётный контроллер. Мы скомпонуем самолёт под них и посчитаем центровку с учётом их массы.</p>
+          </details>
+          <details>
+            <summary>Можно заказать проект конвертоплана с вертикальным взлётом?</summary>
+            <p class="faq-answer">Да, это тариф «Конвертоплан»: самолёт взлетает вертикально на поворотных моторах и переходит в горизонтальный полёт. Проектируем механизм поворота мотогондол или всего крыла и считаем режимы висения и перехода. По желанию помогаем с настройкой полётного контроллера.</p>
+          </details>
+          <details>
+            <summary>Из каких материалов можно строить?</summary>
+            <p class="faq-answer">Потолочная плитка и депрон, EPP, бальза со стеклотекстолитом, 3D-печать из LW-PLA, стекло- и углепластик. Материал влияет на цену и состав файлов — это учтено в калькуляторе.</p>
+          </details>
+          <details>
+            <summary>Сколько длится проект?</summary>
+            <p class="faq-answer">От 10 рабочих дней для тренера до 30 и больше для конвертоплана. Срок зависит от схемы и состава документации и фиксируется в техническом задании.</p>
+          </details>
+          <details>
+            <summary>Цена в калькуляторе — окончательная?</summary>
+            <p class="faq-answer">Нет, это предварительный расчёт. Окончательную сумму мы называем после разбора задачи и фиксируем в техническом задании. Дороже она станет, только если вы расширите задачу.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Заявка -->
+    <section class="section" id="zayavka">
+      <div class="wrap order-grid">
+        <div class="section-head">
+          <h2 class="h2">Оставить заявку</h2>
+          <p class="lead">Опишите задачу — ответим в течение рабочего дня и уточним детали.</p>
+          <dl class="contacts">
+            <div><dt>Telegram</dt><dd><a data-tg href="https://t.me/mehaplane">@mehaplane</a></dd></div>
+            <div><dt>Почта</dt><dd><a data-email href="mailto:hello@mehaplane.ru">hello@mehaplane.ru</a></dd></div>
+          </dl>
+        </div>
+
+        <form class="form" id="order-form" novalidate>
+          <div class="form-row">
+            <div class="field" data-field="name">
+              <label for="f-name">Имя <span class="req">*</span></label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+              <p class="field-error" id="e-name"></p>
+            </div>
+            <div class="field" data-field="contact">
+              <label for="f-contact">Телефон или Telegram <span class="req">*</span></label>
+              <input class="input" id="f-contact" name="contact" type="text" autocomplete="tel" maxlength="80" placeholder="+7… или @username" required>
+              <p class="field-error" id="e-contact"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-tier">Тариф</label>
+            <select class="select" id="f-tier" name="tier">
+              <option value="">Пока не знаю</option>
+              <option value="trainer">Тренер</option>
+              <option value="special">Нестандартная схема</option>
+              <option value="vtol">Конвертоплан</option>
+            </select>
+          </div>
+
+          <div class="field" data-field="task">
+            <label for="f-task">Задача <span class="req">*</span></label>
+            <textarea class="textarea" id="f-task" name="task" maxlength="2000" required placeholder="Что должен уметь самолёт, примерный размах, какая электроника уже есть"></textarea>
+            <p class="field-error" id="e-task"></p>
+          </div>
+
+          <div class="calc-attach" id="calc-attach" hidden>
+            <div class="calc-attach-head">
+              <span>Расчёт из калькулятора</span>
+              <button class="btn btn-ghost btn-small" type="button" id="calc-attach-remove">Убрать</button>
+            </div>
+            <p id="calc-attach-text"></p>
+            <input type="hidden" name="calc" id="f-calc">
+          </div>
+
+          <div class="field" data-field="consent">
+            <label class="check">
+              <input type="checkbox" name="consent" id="f-consent" required>
+              <span>Даю <a href="consent.html">согласие на обработку персональных данных</a> и подтверждаю, что ознакомился с <a href="privacy.html">политикой обработки персональных данных</a>.</span>
+            </label>
+            <p class="field-error" id="e-consent"></p>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Сайт</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn-primary" type="submit" id="order-submit">Отправить заявку</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="logo" href="#top"><svg aria-hidden="true"><use href="#i-logo"/></svg>mehaplane</a>
+          <p>Проектирование радиоуправляемых самолётов под задачу заказчика.</p>
+        </div>
+        <div>
+          <p class="footer-title">Разделы</p>
+          <ul>
+            <li><a href="#tarify">Тарифы</a></li>
+            <li><a href="#raboty">Работы</a></li>
+            <li><a href="calculator.html">Калькулятор</a></li>
+            <li><a href="#zayavka">Заявка</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Документы</p>
+          <ul>
+            <li><a href="offer.html">Публичная оферта</a></li>
+            <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+            <li><a href="consent.html">Согласие на обработку персональных данных</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Контакты</p>
+          <ul>
+            <li><a data-tg href="https://t.me/mehaplane">@mehaplane</a></li>
+            <li><a data-email href="mailto:hello@mehaplane.ru">hello@mehaplane.ru</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 mehaplane</span>
+        <span class="footer-note">Учебный проект: оплата через сайт не принимается</span>
+        <a href="#top">Наверх</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" id="to-top" aria-label="Наверх"><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+
+  <script src="assets/js/config.js?v=3"></script>
+  <script src="assets/js/plane.js?v=3"></script>
+  <script src="assets/js/common.js?v=3"></script>
+  <script src="assets/js/main.js?v=3"></script>
+</body>
+</html>
